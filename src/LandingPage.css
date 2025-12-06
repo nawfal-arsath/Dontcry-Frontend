@@ -1,0 +1,460 @@
+.landing-page {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  overflow: hidden;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #F9FAFB, #ffffff);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.hero-title-gradient {
+  display: block;
+  margin-top: 0.5rem;
+  background: linear-gradient(to right, #2563EB, #4F46E5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  color: #6B7280;
+  max-width: 48rem;
+  margin: 0 auto 3rem;
+  line-height: 1.75;
+}
+
+.hero-cta {
+  display: inline-block;
+  background-color: #111827;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.hero-cta:hover {
+  background-color: #1F2937;
+}
+
+.hero-subtitle {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #6B7280;
+}
+
+/* Features Section */
+.features-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+}
+
+.features-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  font-size: 3.75rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: #6B7280;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background-color: #F9FAFB;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  background-color: #F3F4F6;
+}
+
+.feature-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #111827;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: white;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.feature-description {
+  color: #6B7280;
+  line-height: 1.75;
+}
+
+/* Tech Section */
+.tech-section {
+  padding: 6rem 0;
+  background-color: #F9FAFB;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.tech-item {
+  text-align: center;
+}
+
+.tech-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.tech-description {
+  color: #6B7280;
+  line-height: 1.75;
+}
+
+/* Cry Types Section */
+.cry-types-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+}
+
+.cry-types-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.cry-type-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  transition: all 0.3s;
+}
+
+.cry-type-card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cry-type-name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 6rem 0;
+  background-color: #F9FAFB;
+}
+
+.pricing-badge {
+  display: inline-block;
+  background-color: #111827;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.pricing-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  opacity: 0.7;
+}
+
+.pricing-card.featured {
+  background-color: #111827;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-badge-corner {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #F3F4F6;
+  color: #6B7280;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pricing-card.featured .pricing-badge-corner {
+  background-color: #1F2937;
+  color: #D1D5DB;
+}
+
+.pricing-badge-top {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3B82F6;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pricing-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+  margin-bottom: 1.5rem;
+}
+
+.pricing-price-amount {
+  font-size: 3.125rem;
+  font-weight: 600;
+}
+
+.pricing-price-period {
+  color: #6B7280;
+  margin-left: 0.5rem;
+}
+
+.pricing-card.featured .pricing-price-period {
+  color: #9CA3AF;
+}
+
+.pricing-savings {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-card.featured .pricing-savings {
+  color: #9CA3AF;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  color: #6B7280;
+}
+
+.pricing-card.featured .pricing-features li {
+  color: white;
+}
+
+.pricing-features svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+  color: #9CA3AF;
+}
+
+.pricing-card.featured .pricing-features svg {
+  color: white;
+}
+
+.pricing-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background-color: #E5E7EB;
+  color: #6B7280;
+  cursor: not-allowed;
+}
+
+.pricing-card.featured .pricing-button {
+  background-color: #374151;
+  color: #9CA3AF;
+}
+
+.pricing-note {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: #6B7280;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 6rem 0;
+  background-color: #111827;
+  color: white;
+}
+
+.cta-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 3.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+
+.cta-description {
+  font-size: 1.25rem;
+  color: #D1D5DB;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: white;
+  color: #111827;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #F3F4F6;
+}
+
+/* Footer */
+.footer {
+  background-color: white;
+  padding: 3rem 0;
+  border-top: 1px solid #E5E7EB;
+}
+
+.footer-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.footer-text {
+  color: #6B7280;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .features-grid,
+  .tech-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cry-types-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .navbar-menu {
+    gap: 0;
+  }
+  
+  .navbar-cta {
+    display: none;
+  }
+}

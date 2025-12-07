@@ -40,9 +40,9 @@ export default function LandingPage() {
       rating: 5
     },
     {
-      name: "Emily Rodriguez",
-      role: "Pediatric Nurse & Mom",
-      text: "As a healthcare professional, I'm amazed by the technology. It's scientifically sound and incredibly practical. I recommend it to every new parent I meet.",
+      name: "Priya-USA",
+      role: "First Time Mom",
+      text: "I was so anxious about not knowing what my baby needed. Don't Cry gave me confidence and peace of mind.",
       rating: 5
     }
   ];

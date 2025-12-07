@@ -861,12 +861,14 @@ function LiveTab() {
     <div style={styles.tabContent}>
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       
-      <div style={styles.liveControl}>
-        <div style={styles.liveIconWrapper}>
-          <div style={{...styles.liveIcon, ...(isListening && styles.liveIconActive)}}>
-            <Activity size={40} color={isListening ? '#10B981' : '#8B5CF6'} />
+
+        <div style={{...styles.liveControl, position: 'relative'}}>
+          {isListening && <div style={styles.liveIndicatorDot} />}
+          <div style={styles.liveIconWrapper}>
+            <div style={{...styles.liveIcon, ...(isListening && styles.liveIconActive)}}>
+              <Activity size={40} color={isListening ? '#10B981' : '#8B5CF6'} />
+            </div>
           </div>
-        </div>
 
         {isListening && (
           <div style={styles.liveStatus}>
@@ -917,7 +919,6 @@ function LiveTab() {
 
       {predictions.length > 0 && (
         <>
-          <FreeTrialBanner />
           <div style={styles.predictionsList}>
             <h3 style={styles.predictionsTitle}>Recent Detections</h3>
             <div style={styles.predictionsItems}>
@@ -967,6 +968,21 @@ export default function PredictionPage() {
   const [activeTab, setActiveTab] = useState('record');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+    useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get('tab');
+    if (tabParam && ['upload', 'record', 'live'].includes(tabParam)) {
+      setActiveTab(tabParam);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1115,6 +1131,37 @@ export default function PredictionPage() {
 }
 
 const keyframes = `
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes livePulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0.6;
+    }
+  }
+
   @keyframes pulse {
     0%, 100% {
       opacity: 1;
@@ -1146,14 +1193,7 @@ const keyframes = `
     }
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+
 
   @keyframes shimmer {
     0% {
@@ -1219,6 +1259,18 @@ const keyframes = `
 `;
 
 const styles = {
+  liveIndicatorDot: {
+    position: 'absolute',
+    top: '20px',
+    right: '20px',
+    width: '10px',
+    height: '10px',
+    backgroundColor: '#EF4444',
+    borderRadius: '50%',
+    animation: 'livePulse 1.2s ease-in-out infinite',
+    boxShadow: '0 0 8px rgba(239, 68, 68, 0.6)',
+    zIndex: 10,
+  },
   page: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
     backgroundColor: '#FFFFFF',
@@ -1298,15 +1350,17 @@ const styles = {
     color: '#111827',
     cursor: 'pointer'
   },
-  mobileMenu: {
+    mobileMenu: {
     display: 'flex',
     flexDirection: 'column',
     padding: '20px',
     gap: '4px',
     borderTop: '1px solid rgba(0, 0, 0, 0.05)',
     backgroundColor: 'white',
-    animation: 'slideDown 0.3s ease-out'
+    animation: 'slideDown 0.3s ease-out',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
   },
+  
   mobileMenuLink: {
     fontSize: '16px',
     fontWeight: '500',
@@ -1318,7 +1372,8 @@ const styles = {
     background: 'none',
     cursor: 'pointer',
     borderRadius: '8px',
-    transition: 'background 0.2s ease'
+    transition: 'all 0.2s ease',
+    animation: 'fadeIn 0.4s ease-out',
   },
   container: {
     maxWidth: '1000px',

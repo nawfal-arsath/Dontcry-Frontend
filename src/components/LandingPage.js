@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Star, Upload, Mic, Activity, Zap, Shield, Heart, ChevronRight, Check, PlayCircle, Menu, X, Sparkles, Info } from 'lucide-react';
 
@@ -22,8 +23,8 @@ export default function LandingPage() {
   }, []);
 
   const handleWatchDemo = () => {
-  window.open('https://www.youtube.com/watch?v=YOUR_VIDEO_ID', '_blank');
-};
+    window.open('https://youtu.be/Ui5VCULh_9s?si=CUF6oTFzPX-ED1jo', '_blank');
+  };
 
   const testimonials = [
     {
@@ -56,6 +57,10 @@ export default function LandingPage() {
 
   const handleDetectClick = () => {
     window.location.href = '/Predict';
+  };
+
+  const handleFeatureClick = (tab) => {
+    window.location.href = `/Predict?tab=${tab}`;
   };
 
   return (
@@ -137,7 +142,7 @@ export default function LandingPage() {
               <ChevronRight size={18} />
             </button>
             <button style={styles.secondaryButton} onClick={handleWatchDemo}>
-                <PlayCircle size={18} />
+              <PlayCircle size={18} />
               Watch Demo
             </button>
           </div>
@@ -145,7 +150,6 @@ export default function LandingPage() {
           <p style={styles.heroSubtext}>
             Free until March 1, 2026 • No credit card required
           </p>
-
         </div>
 
         {/* Hero Visual */}
@@ -176,16 +180,48 @@ export default function LandingPage() {
 
         <div style={styles.featuresGrid}>
           {[
-            { icon: Upload, title: 'Upload Audio', desc: 'Analyze recorded audio files instantly with detailed insights and historical tracking' },
-            { icon: Mic, title: 'Live Recording', desc: 'Capture and analyze in real-time through your device with immediate results' },
-            { icon: Activity, title: 'Continuous Monitoring', desc: 'Background detection that learns patterns and alerts you to changes' }
+            { 
+              icon: Upload, 
+              title: 'Upload Audio', 
+              desc: 'Analyze recorded audio files instantly with detailed insights and historical tracking',
+              tab: 'upload'
+            },
+            { 
+              icon: Mic, 
+              title: 'Live Recording', 
+              desc: 'Capture and analyze in real-time through your device with immediate results',
+              tab: 'record'
+            },
+            { 
+              icon: Activity, 
+              title: 'Continuous Monitoring', 
+              desc: 'Background detection that learns patterns and alerts you to changes',
+              tab: 'live'
+            }
           ].map((feature, i) => (
-            <div key={i} style={styles.featureCard}>
+            <div 
+              key={i} 
+              style={styles.featureCard}
+              onClick={() => handleFeatureClick(feature.tab)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = '0 20px 50px rgba(139, 92, 246, 0.2)';
+                e.currentTarget.style.cursor = 'pointer';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.08)';
+              }}
+            >
               <div style={styles.featureIcon}>
                 <feature.icon size={28} />
               </div>
               <h3 style={styles.featureTitle}>{feature.title}</h3>
               <p style={styles.featureDesc}>{feature.desc}</p>
+              <div style={styles.featureAction}>
+                <span style={styles.featureActionText}>Try now</span>
+                <ChevronRight size={16} />
+              </div>
             </div>
           ))}
         </div>
@@ -256,19 +292,20 @@ export default function LandingPage() {
               </div>
               <div style={styles.testimonialAuthor}>
                 <div>
-                  <div style={styles.testimonialName}>
-                    {testimonial.name}
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#3B82F6" style={{marginLeft: '6px', display: 'inline-block', verticalAlign: 'middle'}}>
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                  </div>
-                  <div style={styles.testimonialRole}>{testimonial.role}</div>
-                  <div style={styles.testimonialVerified}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2">
-                      <path d="M9 12l2 2 4-4"/>
-                    </svg>
-                    Verified
-                  </div>
+                <div style={styles.testimonialName}>
+                  {testimonial.name}
+                  <svg width="14" height="18" viewBox="0 0 24 24" fill="none" style={{marginLeft: '6px', display: 'inline-block', verticalAlign: 'middle'}}>
+                    <circle cx="12" cy="12" r="10" fill="#3B82F6"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div style={styles.testimonialVerified}>
+                  <svg width="12" height="15" viewBox="0 0 24 24" fill="none" style={{flexShrink: 0}}>
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="#3B82F6" strokeWidth="2"/>
+                    <path d="M9 12l2 2 4-4" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  Verified
+                </div>
                 </div>
               </div>
             </div>
@@ -290,7 +327,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-     {/* Pricing Section */}
+      {/* Pricing Section */}
       <section id="pricing" style={{...styles.section, ...styles.pricingSection}}>
         <div style={styles.sectionHeader}>
           <h2 style={styles.sectionTitle}>Simple, transparent pricing</h2>
@@ -345,11 +382,8 @@ export default function LandingPage() {
               <button style={plan.featured ? styles.pricingButtonFeatured : styles.pricingButton}>
                 Coming Soon
               </button>
-
             </div>
-            
           ))}
-          
         </div>
       </section>
 
@@ -384,6 +418,26 @@ export default function LandingPage() {
 }
 
 const keyframes = `
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -528,8 +582,11 @@ const styles = {
     padding: '20px',
     gap: '4px',
     borderTop: '1px solid rgba(0, 0, 0, 0.05)',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    animation: 'slideDown 0.3s ease-out',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
   },
+  
   mobileMenuLink: {
     fontSize: '16px',
     fontWeight: '500',
@@ -541,7 +598,8 @@ const styles = {
     background: 'none',
     cursor: 'pointer',
     borderRadius: '8px',
-    transition: 'background 0.2s ease'
+    transition: 'all 0.2s ease',
+    animation: 'fadeIn 0.4s ease-out',
   },
   hero: {
     position: 'relative',
@@ -647,19 +705,6 @@ const styles = {
     color: '#9CA3AF',
     marginBottom: '40px'
   },
-heroDisclaimer: {
-  fontSize: '14px',
-  color: '#1F2937',
-  backgroundColor: '#F0F9FF',
-  padding: '14px 24px',
-  borderRadius: '12px',
-  border: '1px solid #BFDBFE',
-  maxWidth: '700px',
-  margin: '0 auto',
-  lineHeight: '1.7',
-  fontWeight: '400',
-  textAlign: 'center'
-},
   heroVisual: {
     display: 'flex',
     justifyContent: 'center',
@@ -757,7 +802,8 @@ heroDisclaimer: {
     border: '1px solid #F3F4F6',
     transition: 'all 0.3s ease',
     boxShadow: '0 4px 20px rgba(139, 92, 246, 0.08)',
-    animation: 'glow 4s ease-in-out infinite'
+    cursor: 'pointer',
+    position: 'relative'
   },
   featureIcon: {
     width: '56px',
@@ -781,7 +827,20 @@ heroDisclaimer: {
     fontSize: '16px',
     color: '#6B7280',
     lineHeight: '1.7',
-    fontWeight: '400'
+    fontWeight: '400',
+    marginBottom: '20px'
+  },
+  featureAction: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    color: '#8B5CF6',
+    fontSize: '15px',
+    fontWeight: '500',
+    marginTop: 'auto'
+  },
+  featureActionText: {
+    transition: 'all 0.2s ease'
   },
   techSection: {
     backgroundColor: '#FAFAFA'
@@ -845,7 +904,6 @@ heroDisclaimer: {
     marginBottom: '24px',
     letterSpacing: '0.05em'
   },
-
   testimonialBadgeDot: {
     width: '6px',
     height: '6px',
@@ -861,16 +919,25 @@ heroDisclaimer: {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  testimonialCard: {
-    padding: '48px 40px',
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: '20px',
-    boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
-    border: '1px solid rgba(243, 244, 246, 0.8)',
-    transition: 'all 0.5s ease',
-    width: '100%'
-  },
+testimonialCard: {
+  padding: '48px 40px',
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+  border: '1px solid #F3F4F6',
+  transition: 'all 0.5s ease',
+  width: '100%',
+  animation: 'glow 4s ease-in-out infinite'
+},
+
+testimonialVerified: {
+  fontSize: '13px',
+  color: '#3B82F6',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '6px',
+  fontWeight: '500'
+},
   testimonialQuote: {
     fontSize: '64px',
     color: '#E5E7EB',
@@ -908,13 +975,7 @@ heroDisclaimer: {
     color: '#6B7280',
     marginBottom: '6px'
   },
-  testimonialVerified: {
-    fontSize: '13px',
-    color: '#3B82F6',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '4px'
-  },
+
   testimonialDots: {
     display: 'flex',
     justifyContent: 'center',
@@ -922,8 +983,8 @@ heroDisclaimer: {
     marginTop: '36px'
   },
   testimonialDot: {
-    width: '10px',
-    height: '10px',
+    width: '5px',
+    height: '5px',
     borderRadius: '50%',
     border: 'none',
     cursor: 'pointer',
@@ -965,6 +1026,18 @@ heroDisclaimer: {
     color: 'white',
     boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
     border: 'none'
+  },
+  pricingAlwaysFree: {
+    position: 'absolute',
+    top: '-12px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    padding: '6px 18px',
+    backgroundColor: '#10B981',
+    color: 'white',
+    borderRadius: '100px',
+    fontSize: '12px',
+    fontWeight: '600'
   },
   pricingBest: {
     position: 'absolute',
@@ -1103,6 +1176,10 @@ heroDisclaimer: {
     fontSize: '14px',
     color: '#9CA3AF',
     lineHeight: '1.6'
+  },
+  footerRight: {
+    display: 'flex',
+    justifyContent: 'flex-start',
   },
   footerEmail: {
     fontSize: '14px',
